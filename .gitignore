@@ -1,5 +1,6 @@
-\include
+\Include
 \Lib
 \Scripts
 \*.cfg
 \*.pyc
+\.idea
