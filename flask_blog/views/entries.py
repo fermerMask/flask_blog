@@ -1,5 +1,7 @@
 from flask_blog import app
-from flask import request
+from flask import request,redirect,url_for,render_template,flash,session
+from datetime import datetime
+
 
 @app.route('/')
 def show_entries():
@@ -15,7 +17,13 @@ def new_entry():
 
 @app.route('/entries/<int:id>',methods=['GET','POST'])
 def show_entry(id):
-    return f'記事{id}を取得'
+    entry={
+        'id': 1,
+        'title':"初めての投稿",
+        'text':"初めての内容",
+        'created_at':datetime.now()
+    }
+    return render_template('entries/show.html',entry=entry)
 
 @app.route('/entries/<int:id>/edit',methods=['GET','POST'])
 def edit_entry(id):
